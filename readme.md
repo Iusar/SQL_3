@@ -1,6 +1,7 @@
 ## Новая схема БД SQL 
 
-![](https://github.com/Iusar/SQL_3/blob/main/21.08.2021_database_diagram_%232.png)
+![](https://github.com/Iusar/SQL_3/blob/main/21.08.2021_database_diagram_%233.png)
+
 
 ## Задание 2. Команды SQL которые были использованы для создания БД по заданию 2.
 
@@ -49,4 +50,8 @@ CREATE TABLE IF NOT EXISTS Сборники (
 	Год_выпуска VARCHAR(4) NOT NULL,
 	id_track INTEGER REFERENCES Треки(id_track) NOT NULL
 );
+CREATE TABLE IF NOT EXISTS Сборники_Треки (
+	id_collection INTEGER REFERENCES Сборники(id_collection) NOT null,
+	id_track INTEGER REFERENCES Треки(id_track) NOT null
+);	
 ```
