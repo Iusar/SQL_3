@@ -1,54 +1,52 @@
-## Схема базы данных SQL 
+## РќРѕРІР°СЏ СЃС…РµРјР° Р‘Р” SQL 
 
-![](https://github.com/Iusar/SQL_3/blob/main/21.08.2021_database_diagram_#2.png)
+![](https://github.com/Iusar/SQL_3/blob/main/21.08.2021_database_diagram_%232.png)
 
-## Код SQL для создания базы данных для задания 2
+## Р—Р°РґР°РЅРёРµ 2. РљРѕРјР°РЅРґС‹ SQL РєРѕС‚РѕСЂС‹Рµ Р±С‹Р»Рё РёСЃРїРѕР»СЊР·РѕРІР°РЅС‹ РґР»СЏ СЃРѕР·РґР°РЅРёСЏ Р‘Р” РїРѕ Р·Р°РґР°РЅРёСЋ 2.
 
 ```sql
-CREATE TABLE IF NOT EXISTS Исполнители (
+CREATE TABLE IF NOT EXISTS РСЃРїРѕР»РЅРёС‚РµР»Рё (
 	id_artist SERIAL PRIMARY key,
-	Имя VARCHAR(50) NOT NULL unique,
+	РРјСЏ VARCHAR(50) NOT NULL unique,
 	id_genre INTEGER NOT NULL unique
 );
-CREATE TABLE IF NOT EXISTS Альбомы (
+CREATE TABLE IF NOT EXISTS РђР»СЊР±РѕРјС‹ (
 	id_album SERIAL PRIMARY key,
-	Название_альбома VARCHAR(100)  NOT NULL, 
-	Год_выпуска VARCHAR(4) NOT NULL,
-	id_artist INTEGER REFERENCES Исполнители(id_artist) NOT NULL
+	РќР°Р·РІР°РЅРёРµ_Р°Р»СЊР±РѕРјР° VARCHAR(100)  NOT NULL, 
+	Р“РѕРґ_РІС‹РїСѓСЃРєР° VARCHAR(4) NOT NULL,
+	id_artist INTEGER REFERENCES РСЃРїРѕР»РЅРёС‚РµР»Рё(id_artist) NOT NULL
 );
-CREATE TABLE IF NOT EXISTS Треки (
+CREATE TABLE IF NOT EXISTS РўСЂРµРєРё (
 	id_track SERIAL PRIMARY key,
-	Название_трека VARCHAR(100)  NOT NULL,
-	Длительность VARCHAR(10) NOT NULL,
-	id_album INTEGER REFERENCES Альбомы(id_album) NOT NULL
+	РќР°Р·РІР°РЅРёРµ_С‚СЂРµРєР° VARCHAR(100)  NOT NULL,
+	Р”Р»РёС‚РµР»СЊРЅРѕСЃС‚СЊ VARCHAR(10) NOT NULL,
+	id_album INTEGER REFERENCES РђР»СЊР±РѕРјС‹(id_album) NOT NULL
 );
-CREATE TABLE IF NOT EXISTS Жанры (
+CREATE TABLE IF NOT EXISTS Р–Р°РЅСЂС‹ (
 	id_genre SERIAL PRIMARY key,
-	Название_жанра VARCHAR(100)  NOT NULL UNIQUE
+	РќР°Р·РІР°РЅРёРµ_Р¶Р°РЅСЂР° VARCHAR(100)  NOT NULL UNIQUE
 );
-ALTER TABLE Исполнители ADD CONSTRAINT id_genre FOREIGN KEY (id_genre) REFERENCES Жанры(id_genre);
+ALTER TABLE РСЃРїРѕР»РЅРёС‚РµР»Рё ADD CONSTRAINT id_genre FOREIGN KEY (id_genre) REFERENCES Р–Р°РЅСЂС‹(id_genre);
 ```
-## Команды SQL для изменения базы данных для задания 3
+## Р—Р°РґР°РЅРёРµ 3. РљРѕРјР°РЅРґС‹ SQL РґР»СЏ РёР·РјРµРЅРµРЅРёСЏ Р‘Р”.
 
 ```sql
+"Р—Р°РґР°РЅРёРµ 3. РР·РјРµРЅРµРЅРёРµ Р‘Р”"
 
-ALTER TABLE Исполнители DROP COLUMN id_genre;
+ALTER TABLE РСЃРїРѕР»РЅРёС‚РµР»Рё DROP COLUMN id_genre;
 
-CREATE TABLE IF NOT EXISTS Жанры_Исполнители (
-	id_genre INTEGER REFERENCES Жанры(id_genre) NOT null,
-	id_artist INTEGER REFERENCES Исполнители(id_artist) NOT null
+CREATE TABLE IF NOT EXISTS Р–Р°РЅСЂС‹_РСЃРїРѕР»РЅРёС‚РµР»Рё (
+	id_genre INTEGER REFERENCES Р–Р°РЅСЂС‹(id_genre) NOT null,
+	id_artist INTEGER REFERENCES РСЃРїРѕР»РЅРёС‚РµР»Рё(id_artist) NOT null
 );	
-CREATE TABLE IF NOT EXISTS Альбомы_Исполнители (
-	id_album INTEGER REFERENCES Альбомы(id_album) NOT null,
-	id_artist INTEGER REFERENCES Исполнители(id_artist) NOT null
+CREATE TABLE IF NOT EXISTS РђР»СЊР±РѕРјС‹_РСЃРїРѕР»РЅРёС‚РµР»Рё (
+	id_album INTEGER REFERENCES РђР»СЊР±РѕРјС‹(id_album) NOT null,
+	id_artist INTEGER REFERENCES РСЃРїРѕР»РЅРёС‚РµР»Рё(id_artist) NOT null
 );	
-CREATE TABLE IF NOT EXISTS Сборники (
+CREATE TABLE IF NOT EXISTS РЎР±РѕСЂРЅРёРєРё (
 	id_collection SERIAL PRIMARY key,
-	Название_сборника VARCHAR(100)  NOT NULL, 
-	Год_выпуска VARCHAR(4) NOT NULL,
-	id_track INTEGER REFERENCES Треки(id_track) NOT NULL
+	РќР°Р·РІР°РЅРёРµ_СЃР±РѕСЂРЅРёРєР° VARCHAR(100)  NOT NULL, 
+	Р“РѕРґ_РІС‹РїСѓСЃРєР° VARCHAR(4) NOT NULL,
+	id_track INTEGER REFERENCES РўСЂРµРєРё(id_track) NOT NULL
 );
-
 ```
-
-
