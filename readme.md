@@ -49,7 +49,6 @@ CREATE TABLE IF NOT EXISTS Сборники (
 	id_collection SERIAL PRIMARY key,
 	Название_сборника VARCHAR(100)  NOT NULL, 
 	Год_выпуска VARCHAR(4) NOT NULL,
-	id_track INTEGER REFERENCES Треки(id_track) NOT NULL
 );
 CREATE TABLE IF NOT EXISTS Сборники_Треки (
 	id_collection INTEGER REFERENCES Сборники(id_collection) NOT null,
