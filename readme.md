@@ -1,6 +1,6 @@
 ## Новая схема БД SQL 
 
-![](https://github.com/Iusar/SQL_3/blob/main/21.08.2021_database_diagram_%233.png)
+![](https://github.com/Iusar/SQL_3/blob/main/21.08.2021_database_diagram_%234.png)
 
 
 ## Задание 2. Команды SQL которые были использованы для создания БД по заданию 2.
@@ -35,6 +35,7 @@ ALTER TABLE Исполнители ADD CONSTRAINT id_genre FOREIGN KEY (id_genre
 "Задание 3. Изменение БД"
 
 ALTER TABLE Исполнители DROP COLUMN id_genre;
+ALTER TABLE Альбомы DROP COLUMN id_artist;
 
 CREATE TABLE IF NOT EXISTS Жанры_Исполнители (
 	id_genre INTEGER REFERENCES Жанры(id_genre) NOT null,
